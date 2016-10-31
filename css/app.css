@@ -1,0 +1,87 @@
+/*
+ *这是单独为hello mui准备的个性化css，可以覆盖标准mui的css定义；
+ * 在实际项目开发时，建议为App单独写一个css文件，从而实现项目的自定义皮肤功能；
+ * 
+ * */
+/*根据屏幕宽度适配多种手机屏幕@media   2016 4 26 */
+html,body{
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	font-family:"Microsoft YaHei"!important;
+
+}
+
+html{
+	font-size: 100px;
+	line-height: 150%;
+
+}
+.mui-bar-nav ~ .mui-content{
+	padding-top: 0.44rem;
+}
+.mui-bar .mui-icon{
+	font-size: 0.24rem;
+}
+@media screen and (min-width: 325px) and (max-width: 369px){
+	/*#black{*/
+	/*position: absolute;*/
+	/*top: 2rem;*/
+	/*}*/
+	html{
+		font-size: 112px;
+	}
+}
+@media screen and (min-width: 370px) and (max-width: 410px){
+	/*#black{*/
+	/*position: absolute;*/
+	/*top: 2rem;*/
+	/*}*/
+	html{
+		font-size: 117px;
+	}
+	#mui-switch-handle1{
+		-webkit-transform: translate(0.20rem, 0);
+		transform: translate(0.20rem, 0);
+	}
+}
+@media screen and (min-width: 410px) and (max-width: 500px){
+	/*#black{*/
+	/*position: absolute;*/
+	/*top: 2rem;*/
+	/*}*/
+	html{
+		font-size: 129px;
+	}
+	#mui-switch-handle1{
+		-webkit-transform: translate(0.23rem, 0);
+		transform: translate(0.23rem, 0);
+	}
+
+}
+@media screen and (min-width: 760px) {
+	/*#black{*/
+	/*position: absolute;*/
+	/*top: 2rem;*/
+	/*}*/
+	html{
+		font-size: 200px;
+	}
+	body{
+		line-height: normal;
+	}
+	/*#office_edit_block1{*/
+	/*margin-left: 1.55rem;*/
+	/*}*/
+}
+
+body{
+	background-color: #eceff4;
+}
+p{
+	margin: 0px;
+}
+
+/*-----------------公共样式----------------*/
+
