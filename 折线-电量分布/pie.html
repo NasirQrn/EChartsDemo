@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>折现图--一天用电量</title>
+    <link rel="stylesheet" type="text/css" href="../css/app.css"/>
+    <script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+
+    <!--添加echarts-->
+    <script src="../js/echarts.js"></script>
+</head>
+<body>
+
+<!--PC 为ECharts准备一个区域-->
+<div id="eCharts" style="width: 600px;height: 600px"></div>
+<div id="eCharts2" style="width: 600px;height: 600px"></div>
+
+
+<script>
+    //    基于id 来初始化ECharts
+    var myChart = echarts.init(document.getElementById("eCharts"));
+
+    var option = {
+        tittle: {
+            text: '一天用电量分布',//主标题
+            subtext: '纯属模拟'//副标题
+        },
+
+        tooltip: {//提示文本 鼠标悬浮时状态
+            trigger: 'axis'//'axis'坐标轴触发（折线，柱状图 等），'item'数据项图形触发（散点图，饼图等）
+        },
+        toolbox: {
+            show: true,//是否显示工具栏组件
+            feature: {
+                saveAsImages: {}//出现下载保存图片按钮
+            }
+        },
+        xAxis: {
+            type: 'category',//category类目轴   value 数值轴   time时间轴   log对数轴
+            boundaryGap: false,//数值点 在横纵坐标轴线上
+            data: ['00:00', '01:15', '02:30', '03:45', '05:00', '06:15', '07:30', '08:45', '10:00', '11:15', '12:30', '13:45', '15:00', '16:15', '17:30', '18:45', '20:00', '21:15', '22:30', '23:45']
+        },
+        yAxis: {
+            type: 'value',
+            axisLabel: {
+                formatter: '{value}W'// {value}为在有单类目轴时，
+            }
+        },
+        visualMap: {//视觉映射组件
+            show: false,//不显示
+            dimension: 0,
+            pieces: [{
+                lte: 6,
+                color: '#ff0000'
+            }, {
+                gt: 6,
+                lte: 8,
+                color: '#00ff00'
+            }, {
+                gt: 8,
+                lte: 14,
+                color: '#0000ff'
+            }, {
+                gt: 14,
+                lte: 17,
+                color: '#fbfbfb'
+            }, {
+                gt: 17,
+                color: 'green'
+            }]
+        },
+        series: [{
+            name: '用电量',
+            type: 'line',
+            smooth: true,
+            data: [300, 280, 250, 260, 270, 300, 550, 500, 400, 390, 380, 390, 400, 500, 600, 750, 800, 700, 600, 400],
+            markArea: {
+                data: [[{
+                    name: '早高峰',
+                    xAxis: '07:30'
+                }, {
+                    xAxis: '10:00'
+                }], [{
+                    name: '晚高峰',
+                    xAxis: '17:30'
+                }, {
+                    xAxis: '21:15'
+                }]]
+            }
+        }]
+    };
+
+
+    //    使用刚指定的配置项和数据显示图表
+    myChart.setOption(option);
+    //    myChart2.setOption(option2);
+</script>
+
+<script>
+    //    异步加载
+
+</script>
+
+</body>
+</html>
