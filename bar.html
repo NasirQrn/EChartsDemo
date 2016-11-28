@@ -16,24 +16,72 @@
 <body>
 
 <!--PC 为ECharts准备一个区域-->
-<div id="eCharts" style="width: 600px;height: 600px"></div>
-<div id="eCharts2" style="width: 600px;height: 600px"></div>
-
+<div id="eCharts" style="height: 50%"></div>
+<!--<div id="eCharts2" style="width: 100%;height: 50%"></div>-->
 
 <script>
     //    基于id 来初始化ECharts
     var myChart = echarts.init(document.getElementById("eCharts"));
-    var myChart2 = echarts.init(document.getElementById("eCharts2"));
+    //    var myChart2 = echarts.init(document.getElementById("eCharts2"));
 
     //    制定表格的配置项和数据
     var option = {//普通圆柱
+        baseOption: {
+            tittle: {//标题名称
+                text: 'ECharts 标题名称'
+            },
+
+            tooltip: {//提示文本 鼠标悬浮时状态
+
+            },
+            legend: {//说明 图文calculabl
+                data: ['销量']
+
+            },
+            xAxis: {//横轴 内容
+                data: ["销量1", "销量2", "销量3"]
+            },
+            yAxis: {//y轴
+
+            },
+            animationDuration: 10000,
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [1, 2, 3]
+            }]
+        },
+        media: [
+            {
+                option: {
+                    legend: {
+                        right: 'center',
+                        top: 0,
+                        orient: 'horizontal'
+                    },
+                    series: [
+                        {
+                            center: ['50%', '50%']
+                        }
+                    ]
+                }
+
+            },
+            {}
+        ]
+    };
+
+    var option2 = {
         tittle: {//标题名称
             text: 'ECharts 标题名称'
         },
+
         tooltip: {//提示文本 鼠标悬浮时状态
 
         },
-        legend: {//说明 图文
+        legend: {//说明 图文calculabl
+            right: 'center',
+            top: 0,
             data: ['销量']
 
         },
@@ -48,15 +96,13 @@
             type: 'bar',
             data: [1, 2, 3]
         }]
-
     };
 
-    var option2 = {};
 
 
     //    使用刚指定的配置项和数据显示图表
     myChart.setOption(option);
-    myChart2.setOption(option2);
+    //    myChart2.setOption(option2);
 </script>
 
 </body>
